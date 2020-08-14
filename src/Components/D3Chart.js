@@ -1,3 +1,4 @@
+import React from "react";
 import * as d3 from "d3";
 
 const width = 500,
@@ -7,11 +8,13 @@ const colors = {
     gray: "gray",
     orange: "orange"
 }
-    // data = [20, 12, 16, 25, 20];
-    const dataUrl = "https://udemy-react-d3.firebaseio.com/ages.json";
 
-export default class D3Chart {
+// data = [20, 12, 16, 25, 20];
+const dataUrl = "https://udemy-react-d3.firebaseio.com/ages.json";
+
+class D3Chart extends React.Component {
     constructor(element) {
+        super();
         const svg = d3.select(element)
             .append("svg")
                 .attr("width", width)
@@ -35,8 +38,6 @@ export default class D3Chart {
         })
         // console.log(d3.select(element))
     }
-
-    createSomething() {
-        
-    }
 }
+
+export default D3Chart;
