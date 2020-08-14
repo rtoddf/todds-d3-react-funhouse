@@ -33,11 +33,10 @@ export default class D3Chart {
                         return d.age > 10 ? colors.gray : colors.orange
                     })
         })
-
-        
-
-        
-            
         // console.log(d3.select(element))
+    }
+
+    createSomething() {
+        
     }
 }
