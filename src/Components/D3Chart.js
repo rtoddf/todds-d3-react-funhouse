@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import * as d3 from "d3";
 
 const width = 500,
@@ -12,10 +12,11 @@ const colors = {
 // data = [20, 12, 16, 25, 20];
 const dataUrl = "https://udemy-react-d3.firebaseio.com/ages.json";
 
-class D3Chart extends React.Component {
-    constructor(element) {
-        super();
-        const svg = d3.select(element)
+const D3Chart = () => {
+    const ref = useRef()
+
+    useEffect(() => {
+        const svg = d3.select(ref.current)
             .append("svg")
                 .attr("width", width)
                 .attr("height", height)
@@ -36,8 +37,35 @@ class D3Chart extends React.Component {
                         return d.age > 10 ? colors.gray : colors.orange
                     })
         })
-        // console.log(d3.select(element))
-    }
+    }, [])
+
+    return (<div ref={ref} />)
+
+    // constructor(element) {
+    //     super();
+    //     const svg = d3.select(element)
+    //         .append("svg")
+    //             .attr("width", width)
+    //             .attr("height", height)
+
+    //     d3.json(dataUrl).then(data => {
+    //         console.log("data: ", data)
+
+    //         const rects = svg.selectAll("rect")
+    //             .data(data)
+
+    //         rects.enter()
+    //             .append("rect")
+    //                 .attr("x", (d, i) => i * 100)
+    //                 .attr("y", (d, i) => height - (d.age * 10))
+    //                 .attr("width", 50)
+    //                 .attr("height", d => (d.age * 10))
+    //                 .attr("fill", (d) => {
+    //                     return d.age > 10 ? colors.gray : colors.orange
+    //                 })
+    //     })
+    //     // console.log(d3.select(element))
+    // }
 }
 
 export default D3Chart;
