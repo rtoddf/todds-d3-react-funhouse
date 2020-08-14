@@ -1,8 +1,14 @@
 import * as d3 from "d3";
 
-const data = [20, 12, 16, 25, 20],
-    width = 500,
-    height = 300;
+const width = 500,
+    height = 300
+
+const colors = {
+    gray: "gray",
+    orange: "orange"
+}
+    // data = [20, 12, 16, 25, 20];
+    const dataUrl = "https://udemy-react-d3.firebaseio.com/ages.json";
 
 export default class D3Chart {
     constructor(element) {
@@ -11,16 +17,26 @@ export default class D3Chart {
                 .attr("width", width)
                 .attr("height", height)
 
-        const rects = svg.selectAll("rect")
-            .data(data)
+        d3.json(dataUrl).then(data => {
+            console.log("data: ", data)
 
-        rects.enter()
-            .append("rect")
-                .attr("x", (d, i) => i * 100)
-                .attr("y", (d, i) => height - d)
-                .attr("width", 50)
-                .attr("height", d => d)
-                .attr("fill", "gray")
+            const rects = svg.selectAll("rect")
+                .data(data)
+
+            rects.enter()
+                .append("rect")
+                    .attr("x", (d, i) => i * 100)
+                    .attr("y", (d, i) => height - (d.age * 10))
+                    .attr("width", 50)
+                    .attr("height", d => (d.age * 10))
+                    .attr("fill", (d) => {
+                        return d.age > 10 ? colors.gray : colors.orange
+                    })
+        })
+
+        
+
+        
             
         // console.log(d3.select(element))
     }
