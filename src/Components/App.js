@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import ChartWrapper from './ChartWrapper';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import Simple01Hooks from "./Simple/Hooks/Simple01";
+import Simple01Class from "./Simple/Class/Simple01";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <ChartWrapper />
-      </div>
+      <>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/simple/hooks/simple01" render={() => (<Simple01Hooks />)} />
+            <Route exact path="/simple/class/simple01" render={() => (<Simple01Class />)} />
+          </Switch>
+        </BrowserRouter>
+      </>
     );
   }
 }

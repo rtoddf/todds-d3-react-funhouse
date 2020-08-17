@@ -7,8 +7,8 @@ const colors = {
     gray: "gray",
     orange: "orange"
 }
-    // data = [20, 12, 16, 25, 20];
-    const dataUrl = "https://udemy-react-d3.firebaseio.com/ages.json";
+// data = [20, 12, 16, 25, 20];
+const dataUrl = "https://udemy-react-d3.firebaseio.com/ages.json";
 
 export default class D3Chart {
     constructor(element) {
@@ -18,7 +18,7 @@ export default class D3Chart {
                 .attr("height", height)
 
         d3.json(dataUrl).then(data => {
-            console.log("data: ", data)
+            console.log("data from class: ", data)
 
             const rects = svg.selectAll("rect")
                 .data(data)
