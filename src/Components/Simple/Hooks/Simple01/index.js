@@ -1,14 +1,8 @@
-import React, { Component } from 'react';
-import ChartWrapper from './ChartWrapper';
+import React from 'react';
+import Chart from "./Chart";
 
-class Simple01 extends Component {
-  render() {
-    return (
-      <>
-        <ChartWrapper />
-      </>
-    );
-  }
+const Simple01 = () => {
+    return <><Chart /></>
 }
 
 export default Simple01;

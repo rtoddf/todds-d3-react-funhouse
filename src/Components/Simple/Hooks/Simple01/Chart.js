@@ -9,10 +9,9 @@ const colors = {
     orange: "orange"
 }
 
-// data = [20, 12, 16, 25, 20];
 const dataUrl = "https://udemy-react-d3.firebaseio.com/ages.json";
 
-const D3Chart = () => {
+const Chart = () => {
     const ref = useRef()
 
     useEffect(() => {
@@ -40,32 +39,6 @@ const D3Chart = () => {
     }, [])
 
     return (<div ref={ref} />)
-
-    // constructor(element) {
-    //     super();
-    //     const svg = d3.select(element)
-    //         .append("svg")
-    //             .attr("width", width)
-    //             .attr("height", height)
-
-    //     d3.json(dataUrl).then(data => {
-    //         console.log("data: ", data)
-
-    //         const rects = svg.selectAll("rect")
-    //             .data(data)
-
-    //         rects.enter()
-    //             .append("rect")
-    //                 .attr("x", (d, i) => i * 100)
-    //                 .attr("y", (d, i) => height - (d.age * 10))
-    //                 .attr("width", 50)
-    //                 .attr("height", d => (d.age * 10))
-    //                 .attr("fill", (d) => {
-    //                     return d.age > 10 ? colors.gray : colors.orange
-    //                 })
-    //     })
-    //     // console.log(d3.select(element))
-    // }
 }
 
-export default D3Chart;
+export default Chart;
