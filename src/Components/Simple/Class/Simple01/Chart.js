@@ -1,4 +1,3 @@
-import React, { useRef, useState, useEffect } from "react";
 import * as d3 from "d3";
 
 const width = 500,
@@ -8,20 +7,18 @@ const colors = {
     gray: "gray",
     orange: "orange"
 }
-
+// data = [20, 12, 16, 25, 20];
 const dataUrl = "https://udemy-react-d3.firebaseio.com/ages.json";
 
-const Chart = () => {
-    const ref = useRef()
-
-    useEffect(() => {
-        const svg = d3.select(ref.current)
+export default class D3Chart {
+    constructor(element) {
+        const svg = d3.select(element)
             .append("svg")
                 .attr("width", width)
                 .attr("height", height)
 
         d3.json(dataUrl).then(data => {
-            console.log("data from hooks: ", data)
+            console.log("data from class: ", data)
 
             const rects = svg.selectAll("rect")
                 .data(data)
@@ -36,9 +33,10 @@ const Chart = () => {
                         return d.age > 10 ? colors.gray : colors.orange
                     })
         })
-    }, [])
+        // console.log(d3.select(element))
+    }
 
-    return (<div ref={ref} />)
+    createSomething() {
+        
+    }
 }
-
-export default Chart;
