@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Simple01Hooks from "./Simple/Hooks/Simple01";
 import Simple01Class from "./Simple/Class/Simple01";
 
-import AlbersUsaClass from "./Maps/Class/Projections/AbersUsa";
+import AlbersUsaClass from "./Maps/Class/Projections/AlbersUsa";
 import AlbersUsaHooks from "./Maps/Hooks/Projections/AlbersUsa";
 
 class App extends Component {
