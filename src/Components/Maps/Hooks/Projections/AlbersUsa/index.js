@@ -1,8 +1,8 @@
 import React from 'react';
-import Chart from "./Chart";
+import MapWrapper from "./MapWrapper";
 
-const Simple01 = () => {
-    return <><Chart /></>
+const AbersUsa = () => {
+    return <><MapWrapper /></>
 }
 
-export default Simple01;
+export default AbersUsa;
