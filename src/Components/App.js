@@ -5,6 +5,7 @@ import Simple01Hooks from "./Simple/Hooks/Simple01";
 import Simple01Class from "./Simple/Class/Simple01";
 
 import AlbersUsaClass from "./Maps/Class/Projections/AbersUsa";
+import AlbersUsaHooks from "./Maps/Hooks/Projections/AlbersUsa";
 
 class App extends Component {
   render() {
@@ -16,6 +17,8 @@ class App extends Component {
             <Route exact path="/simple/class/simple01" render={() => (<Simple01Class />)} />
 
             <Route exact path="/maps/class/projections/albersusa" render={() => (<AlbersUsaClass />)} />
+            <Route exact path="/maps/hooks/projections/albersusa" render={() => (<AlbersUsaHooks />)} />
+            
           </Switch>
         </BrowserRouter>
       </>

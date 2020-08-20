@@ -1,14 +1,12 @@
 import * as d3 from "d3";
-import {selection, select} from "d3-selection";
+// import {selection, select} from "d3-selection";
 import * as topojson from "topojson-client";
 import "d3-selection-multi";
+import us from '../../../../Data/topology/us.json';
 
-import us from "./us.json";
+let width, height, vis_group, aspect
 
-const width = 1000,
-    height = 500,
-    margins = {top: 0, right: 20, bottom: 20, left: 20}
-
+const margins = {top: 0, right: 20, bottom: 20, left: 20}
 const defaults = {
     colors: {
         none: 'none',
@@ -20,10 +18,13 @@ const defaults = {
     }
 }
 
-const url = "us.json";
-
 export default class Map {
     constructor(element) {
+        console.log('element: ', element.offsetWidth)
+
+        width = element.offsetWidth - margins.left - margins.right
+        height = width * .6
+
         var projection = d3.geoAlbersUsa()
             .scale(width)
             .translate([ width/2, height/2 ]);
@@ -40,16 +41,10 @@ export default class Map {
                     'viewBox': '0 0 ' + (width + margins.left + margins.right) + ' ' + (height + margins.top + margins.bottom)
                 })
 
-        console.log("us: ", us)
-
         Promise.all([us]).then(function(data) {
             const topology = data[0]
-            let vis_group, aspect
-            // console.log("topology: ", topology)
-            console.log("us: ", us)
 
             vis_group = vis.append('g')
-
             vis_group.append('path')
                 .datum(topojson.feature(topology, topology.objects.land))
                 .attrs({
